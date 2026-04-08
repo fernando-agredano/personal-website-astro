@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-premium-black: #050505;
+  --color-premium-gray: #121212;
+  --color-accent-blue: #00f2ff;
+  --color-accent-magenta: #ff00ff;
+  --color-accent-green: #00ffaa;
+  --color-accent-orange: #ff6e5c;
+  --color-accent-wine: #94005f;
+  --color-accent-purple: #401edb;
+  --color-accent-purple-light: #89006b;
+  --color-accent-blue-light: #0057c2;
+  --color-accent-blue-dark: #0f4f75;
+  --color-accent-green-darker: #0edbab;
+  --font-sans: var(--font-inter);
+}
+:root {
+  --background: #fdfdfd;
+  --foreground: #0a0a0a;
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+.dark {
+  --background: #050505;
+  --foreground: #f0f0f0;
+}
+@layer base {
+  html {
+    @apply bg-background;
+    overscroll-behavior: none;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-accent-blue selection:text-premium-black;
+    overscroll-behavior: none;
+    font-family: var(--font-inter);
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tighter font-bold;
+  }
+}
+@layer components {
+  /* Aligns main content with Navbar (logo ↔ Contact): max-w-6xl below lg, 1400px at lg+ — same as Navbar inner. */
+  .page-shell {
+    @apply mx-auto min-w-0 w-full max-w-6xl px-0 sm:px-4 md:px-8 lg:max-w-[1400px];
+  }
+}
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+  .text-glow-blue {
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+  }
+  .dark-noise {
+    display: none;
+  }
+}
