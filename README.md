@@ -2,7 +2,7 @@
 
 Personal portfolio site for Fernando Agredano, Full-Stack Developer & AI Developer. Built with Astro and React, showcasing experience, projects, skills, and ways to get in touch.
 
-**Live site:** _coming soon — not deployed yet_
+**Live site:** [personal-website-astro-wheat.vercel.app](https://personal-website-astro-wheat.vercel.app)
 
 ---
 

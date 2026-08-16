@@ -108,7 +108,7 @@ export function Hero() {
               <Reveal direction="up" delay={0.38}>
                 <div className="mt-4 flex justify-center lg:justify-start sm:mt-6">
                   <a
-                    href="/Fernando-Agredano-CV.pdf"
+                    href="/documents/Fernando-Agredano-CV.pdf"
                     download
                     className="
                       group inline-flex w-full max-w-[280px] items-center justify-center gap-3
