@@ -10,12 +10,12 @@ function normalizeHash(hash: string) {
 }
 
 export function Navbar() {
-  const { scrollY, scrollTo } = useScroll();
+  const { isScrolled, scrollTo } = useScroll();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [activeSection, setActiveSection] = React.useState("#home");
 
   /** Solid bar once the user leaves the top of the page */
-  const useSolidNav = scrollY > 20;
+  const useSolidNav = isScrolled;
 
   const goTo = React.useCallback((hash: string) => {
     const normalized = normalizeHash(hash);

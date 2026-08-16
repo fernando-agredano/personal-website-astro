@@ -2,17 +2,13 @@ import * as React from "react";
 import { fernandoStack } from "@/content/fernandoStack";
 import { cn } from "@/lib/utils";
 
-const keyCls =
-  "text-[var(--color-accent-green-darker)] transition-all duration-500 ease-out group-hover:text-[#7ef3d3] group-hover:drop-shadow-[0_0_14px_rgba(14,219,171,0.65)]";
+const keyCls = "text-[var(--color-accent-green-darker)]";
 
-const strCls =
-  "text-amber-200/90 transition-all duration-500 ease-out group-hover:text-[#c6ffe8] group-hover:drop-shadow-[0_0_10px_rgba(14,219,171,0.35)]";
+const strCls = "text-amber-200/90";
 
-const punctCls =
-  "text-white/45 transition-colors duration-500 group-hover:text-white/65";
+const punctCls = "text-white/45";
 
-const punctDimCls =
-  "text-white/35 transition-colors duration-500 group-hover:text-[var(--color-accent-green-darker)]/80";
+const punctDimCls = "text-white/35";
 
 function isPlainObject(v: unknown): v is Record<string, unknown> {
   return typeof v === "object" && v !== null && !Array.isArray(v);
@@ -46,7 +42,7 @@ function CodeValue({
   const indent = wideLayout ? 16 + depth * 20 : 10 + depth * 12;
 
   if (value === null) {
-    return <span className="text-white/45 transition-colors group-hover:text-white/60">null</span>;
+    return <span className="text-white/45">null</span>;
   }
 
   if (typeof value === "string") {
@@ -63,11 +59,7 @@ function CodeValue({
   }
 
   if (typeof value === "number" || typeof value === "boolean") {
-    return (
-      <span className="text-orange-300 transition-all duration-500 group-hover:text-amber-200 group-hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.35)]">
-        {String(value)}
-      </span>
-    );
+    return <span className="text-orange-300">{String(value)}</span>;
   }
 
   if (Array.isArray(value)) {
@@ -102,9 +94,7 @@ function CodeValue({
               {typeof item === "string" ? (
                 <span className={strCls}>&quot;{item}&quot;</span>
               ) : (
-                <span className="text-orange-300 transition-all duration-500 group-hover:text-amber-200">
-                  {String(item)}
-                </span>
+                <span className="text-orange-300">{String(item)}</span>
               )}
               {i < value.length - 1 ? (
                 <span className={punctDimCls}>, </span>
@@ -144,7 +134,7 @@ function CodeValue({
         {keys.map((k, i) => (
           <div key={k} style={{ paddingLeft: indent }}>
             <span className={keyCls}>{k}</span>
-            <span className="text-white/40 transition-colors duration-500 group-hover:text-white/55">
+            <span className="text-white/40">
               :{" "}
             </span>
             <CodeValue
@@ -174,31 +164,26 @@ export function SkillsCodeScreen() {
 
       <div
         className={cn(
-          "group relative min-w-0 max-w-full cursor-crosshair overflow-hidden rounded-2xl border border-white/10",
+          "relative min-w-0 max-w-full overflow-hidden rounded-2xl border border-white/10",
           "bg-[#06080c] shadow-[0_24px_80px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.04)]",
-          "transition-all duration-500 ease-out",
-          "hover:-translate-y-0.5 hover:border-[var(--color-accent-green-darker)]/45",
-          "hover:shadow-[0_28px_100px_rgba(0,0,0,0.6),0_0_0_1px_rgba(14,219,171,0.12),0_0_80px_-20px_rgba(14,219,171,0.35)]",
         )}
       >
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#0edbab]/0 via-transparent to-[#0edbab]/0 opacity-0 transition-opacity duration-500 group-hover:from-[#0edbab]/[0.07] group-hover:to-[#0edbab]/[0.04] group-hover:opacity-100" />
-
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.07] transition-opacity duration-500 group-hover:opacity-[0.03]"
+          className="pointer-events-none absolute inset-0 opacity-[0.07]"
           style={{
             backgroundImage:
               "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.35) 2px, rgba(0,0,0,0.35) 4px)",
           }}
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[var(--color-accent-green-darker)]/5 via-transparent to-transparent transition-opacity duration-500 group-hover:from-[var(--color-accent-green-darker)]/15" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[var(--color-accent-green-darker)]/5 via-transparent to-transparent" />
 
-        <div className="relative flex items-center gap-2 border-b border-white/10 bg-black/40 px-4 py-2.5 backdrop-blur-sm transition-colors duration-500 group-hover:border-[var(--color-accent-green-darker)]/25 group-hover:bg-black/50 lg:px-5 lg:py-3">
+        <div className="relative flex items-center gap-2 border-b border-white/10 bg-black/40 px-4 py-2.5 backdrop-blur-sm lg:px-5 lg:py-3">
           <div className="flex gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57] transition-transform duration-500 group-hover:scale-110" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e] transition-transform duration-500 group-hover:scale-110 group-hover:delay-75" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#28c840] transition-transform duration-500 group-hover:scale-110 group-hover:delay-150" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
           </div>
-          <span className="ml-2 font-mono text-[11px] text-white/45 transition-all duration-500 group-hover:text-[var(--color-accent-green-darker)] sm:text-xs lg:text-sm">
+          <span className="ml-2 font-mono text-[11px] text-white/45 sm:text-xs lg:text-sm">
             fernando.ts
           </span>
         </div>
@@ -231,13 +216,13 @@ export function SkillsCodeScreen() {
                 "max-lg:whitespace-pre-wrap max-lg:break-words",
               )}
             >
-              <span className="text-violet-400 transition-all duration-500 group-hover:text-violet-300 group-hover:drop-shadow-[0_0_14px_rgba(167,139,250,0.55)]">
+              <span className="text-violet-400">
                 const
               </span>{" "}
-              <span className="text-sky-400 transition-all duration-500 group-hover:text-cyan-300 group-hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.45)]">
+              <span className="text-sky-400">
                 fernando
               </span>
-              <span className="text-white/40 transition-colors duration-500 group-hover:text-white/55">
+              <span className="text-white/40">
                 {" "}
                 ={" "}
               </span>
@@ -250,7 +235,7 @@ export function SkillsCodeScreen() {
                   className="block min-w-0 max-w-full pl-3 sm:pl-4 lg:pl-7 xl:pl-8"
                 >
                   <span className={keyCls}>{key}</span>
-                  <span className="text-white/40 transition-colors duration-500 group-hover:text-white/55">
+                  <span className="text-white/40">
                     :{" "}
                   </span>
                   <CodeValue
@@ -266,7 +251,7 @@ export function SkillsCodeScreen() {
               ))}
 
               <span className={punctCls}>{"}"}</span>
-              <span className="text-white/40 transition-colors duration-500 group-hover:text-[var(--color-accent-green-darker)]/90">
+              <span className="text-white/40">
                 ;
               </span>
             </code>

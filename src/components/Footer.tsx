@@ -11,7 +11,7 @@ export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-premium-black/50 py-16">
       <div className="px-4 sm:px-6 md:px-12 lg:px-24">
-        <div className="page-shell">
+        <div className="page-shell lg:max-w-none">
           <div className="grid grid-cols-1 items-center gap-10 text-center md:grid-cols-3 lg:items-start lg:gap-12 lg:text-left">
             <div className="flex flex-col items-center gap-3 lg:items-start">
               <div className="relative inline-flex items-center gap-2">
@@ -57,12 +57,12 @@ export function Footer() {
               </p>
             </div>
 
-            <div className="flex flex-col items-center gap-4 lg:items-start">
+            <div className="flex flex-col items-center gap-4">
               <span className="text-sm font-semibold uppercase tracking-widest text-white/70">
                 Navigation
               </span>
 
-              <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-white/50 lg:justify-start">
+              <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-white/50">
                 {[
                   { label: "Home", href: "#home" },
                   { label: "Experience", href: "#experience" },
@@ -74,7 +74,7 @@ export function Footer() {
                   <a
                     key={l.href}
                     href={l.href}
-                    className="transition-all duration-200 hover:text-[var(--color-accent-green-darker)] hover:-translate-y-1"
+                    className="transition-colors duration-200 hover:text-[var(--color-accent-green-darker)]"
                   >
                     {l.label}
                   </a>
@@ -82,17 +82,17 @@ export function Footer() {
               </div>
             </div>
 
-            <div className="flex flex-col items-center gap-4 lg:items-start">
+            <div className="flex flex-col items-center gap-4 lg:justify-self-end">
               <span className="text-sm font-semibold uppercase tracking-widest text-white/70">
                 Connect
               </span>
 
-              <div className="flex justify-center gap-5 lg:justify-start">
+              <div className="flex justify-center gap-5">
                 <a
                   href={portfolioData.socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-lg border border-white/10 p-2 transition-all hover:border-[var(--color-accent-green-darker)] hover:text-[var(--color-accent-green-darker)]"
+                  className="rounded-lg border-2 border-white/10 p-2 transition-all hover:border-[var(--color-accent-green-darker)] hover:text-[var(--color-accent-green-darker)]"
                   aria-label="GitHub"
                 >
                   <Github size={18} />
@@ -102,7 +102,7 @@ export function Footer() {
                   href={portfolioData.socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-lg border border-white/10 p-2 transition-all hover:border-[var(--color-accent-green-darker)] hover:text-[var(--color-accent-green-darker)]"
+                  className="rounded-lg border-2 border-white/10 p-2 transition-all hover:border-[var(--color-accent-green-darker)] hover:text-[var(--color-accent-green-darker)]"
                   aria-label="LinkedIn"
                 >
                   <Linkedin size={18} />
@@ -113,7 +113,7 @@ export function Footer() {
                     href={portfolioData.socials.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-lg border border-white/10 p-2 transition-all hover:border-[var(--color-accent-green-darker)] hover:text-[var(--color-accent-green-darker)]"
+                    className="rounded-lg border-2 border-white/10 p-2 transition-all hover:border-[var(--color-accent-green-darker)] hover:text-[var(--color-accent-green-darker)]"
                     aria-label="Instagram"
                   >
                     <Instagram size={18} />
@@ -125,7 +125,7 @@ export function Footer() {
                     href={portfolioData.socials.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-lg border border-white/10 p-2 transition-all hover:border-[var(--color-accent-green-darker)] hover:text-[var(--color-accent-green-darker)]"
+                    className="rounded-lg border-2 border-white/10 p-2 transition-all hover:border-[var(--color-accent-green-darker)] hover:text-[var(--color-accent-green-darker)]"
                     aria-label="Facebook"
                   >
                     <Facebook size={18} />
@@ -134,7 +134,7 @@ export function Footer() {
 
                 <a
                   href={`mailto:${portfolioData.email}`}
-                  className="rounded-lg border border-white/10 p-2 transition-all hover:border-[var(--color-accent-green-darker)] hover:text-[var(--color-accent-green-darker)]"
+                  className="rounded-lg border-2 border-white/10 p-2 transition-all hover:border-[var(--color-accent-green-darker)] hover:text-[var(--color-accent-green-darker)]"
                   aria-label="Email"
                 >
                   <Mail size={18} />

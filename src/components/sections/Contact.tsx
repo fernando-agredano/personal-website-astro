@@ -71,7 +71,7 @@ export function Contact() {
               <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 <a
                   href={emailItem.url}
-                  className="flex items-center gap-4 p-4 glass rounded-xl border border-white/5 hover:border-[var(--color-accent-green-darker)]/40 hover:bg-[var(--color-accent-green-darker)]/5 transition-all duration-300 group"
+                  className="flex items-center gap-4 p-4 glass rounded-xl border-2 border-white/5 hover:border-[var(--color-accent-green-darker)]/65 hover:bg-[var(--color-accent-green-darker)]/5 transition-all duration-300 group"
                 >
                   <EmailIcon
                     size={22}
@@ -88,7 +88,7 @@ export function Contact() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 glass rounded-xl border border-white/5 hover:border-[var(--color-accent-green-darker)]/40 hover:bg-[var(--color-accent-green-darker)]/5 transition-all duration-300 group"
+                    className="flex items-center gap-4 p-4 glass rounded-xl border-2 border-white/5 hover:border-[var(--color-accent-green-darker)]/65 hover:bg-[var(--color-accent-green-darker)]/5 transition-all duration-300 group"
                   >
                     <Icon
                       size={22}
@@ -129,7 +129,7 @@ export function Contact() {
                 className="
       group relative inline-flex items-center justify-center gap-3
       px-8 py-4 sm:px-10 sm:py-5
-      border border-[var(--color-accent-green-darker)]
+      border-2 border-[var(--color-accent-green-darker)]
       text-white
       font-semibold
       rounded-xl

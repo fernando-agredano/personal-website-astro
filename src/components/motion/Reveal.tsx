@@ -85,14 +85,6 @@ export function Reveal({
 
     observer.observe(el);
 
-    requestAnimationFrame(() => {
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      if (rect.top < vh * 0.88 && rect.bottom > 0) {
-        runReveal();
-      }
-    });
-
     return () => {
       observer.disconnect();
       gsap.killTweensOf(el);

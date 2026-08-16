@@ -16,47 +16,51 @@ export const fernandoStack = {
         "Magic UI",
         "Origin UI",
       ],
-      animation: ["GSAP", "ReactBits", "Lenis (smooth scroll)"],
+      animation: ["GSAP", "Framer Motion", "ReactBits", "Lenis (smooth scroll)"],
+      dataViz: ["D3.js", "Recharts"],
     },
 
-    backend: ["Node.js", "Express", "NestJS", "ASP.NET"],
+    backend: ["Node.js", "Express", "Fastify", "NestJS", "FastAPI", "Flask", "ASP.NET"],
 
     databases: [
       "PostgreSQL",
       "MySQL",
       "SQL Server",
+      "SQLite",
       "MongoDB",
-      "Supabase",
+      "Supabase (RLS)",
       "Firebase",
+      "IndexedDB (Dexie.js)",
     ],
 
     devops: ["Docker", "GitHub Actions", "CI/CD"],
 
-    cloud: ["AWS (EC2, S3, Lambda)"],
+    cloud: ["AWS (EC2, S3, Lambda)", "Vercel", "Render"],
 
     testing: ["Vitest", "Cypress"],
   },
 
   ai: {
-    tools: ["OpenCode", "Codex", "Claude"],
+    tools: ["Claude Code", "Claude Agent SDK", "OpenCode", "Codex"],
     focus: [
-      "AI agents",
+      "Multi-agent orchestration",
+      "Agent Skills",
+      "MCP servers",
       "LLM integrations",
       "Automation (n8n)",
       "Prompt engineering",
-      "Agent Skills",
-      "MCP Servers",
     ],
   },
 
   expertise: [
     "Full-stack development",
     "AI-driven workflows",
+    "Backend architecture patterns (Clean, CQRS, Hexagonal)",
     "API design (REST)",
     "Scalable architecture",
     "Process automation",
   ],
 
   currentFocus:
-    "Building AI-powered apps, intelligent agents, and automated systems",
+    "Building AI-powered apps, multi-agent systems, and automated engineering workflows",
 } as const;

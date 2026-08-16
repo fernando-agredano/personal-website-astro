@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <style>
+      .lbl { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0edbab; letter-spacing: 0.08em; }
+      .ring-lbl { font-family: Inter, ui-sans-serif, system-ui, sans-serif; fill: rgba(240,240,240,0.55); font-weight: 600; }
+      .core-lbl { font-family: Inter, ui-sans-serif, system-ui, sans-serif; fill: #0edbab; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect width="800" height="450" fill="#050505" />
+
+  <text x="40" y="40" class="lbl" font-size="11">CLEAN ARCHITECTURE</text>
+
+  <!-- concentric layers -->
+  <rect x="60" y="55" width="480" height="340" rx="18" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" />
+  <text x="80" y="80" class="ring-lbl" font-size="12">INFRASTRUCTURE</text>
+
+  <rect x="110" y="95" width="380" height="260" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" />
+  <text x="130" y="120" class="ring-lbl" font-size="12">INTERFACES</text>
+
+  <rect x="160" y="135" width="280" height="180" rx="14" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.14)" />
+  <text x="180" y="160" class="ring-lbl" font-size="12">USE CASES</text>
+
+  <rect x="220" y="175" width="160" height="100" rx="12" fill="rgba(14,219,171,0.08)" stroke="rgba(14,219,171,0.55)" />
+  <text x="300" y="230" text-anchor="middle" class="core-lbl" font-size="14">DOMAIN</text>
+
+  <!-- dependency rule arrow -->
+  <line x1="660" y1="90" x2="660" y2="360" stroke="rgba(14,219,171,0.6)" stroke-width="1.5" />
+  <path d="M 660 360 L 653 345 L 667 345 Z" fill="rgba(14,219,171,0.7)" />
+  <text x="678" y="230" class="lbl" font-size="10" transform="rotate(90 678 230)" text-anchor="middle">DEPENDENCY RULE</text>
+
+  <text x="40" y="420" class="ring-lbl" font-size="11" fill="rgba(240,240,240,0.35)">Express · products &amp; orders · e-commerce API</text>
+</svg>

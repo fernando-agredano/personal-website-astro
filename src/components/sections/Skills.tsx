@@ -1,6 +1,7 @@
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { IconType } from "react-icons";
+import type { Skill } from "@/types/portfolio";
 import { portfolioData } from "@/content/portfolio";
 import { Reveal } from "@/components/motion/Reveal";
 import { SkillsCodeScreen } from "@/components/sections/SkillsCodeScreen";
@@ -10,7 +11,8 @@ import {
   SiGsap, SiDotnet, SiPython, SiOpenjdk, SiPostgresql, SiMysql, SiSqlite, SiMariadb, SiSupabase,
   SiDocker, SiKubernetes, SiTerraform, SiAnsible, SiJenkins, SiGitlab, SiPrometheus, SiGrafana,
   SiDatadog, SiElasticsearch, SiPuppet, SiChef, SiVercel, SiRender, SiHostinger, SiN8N,
-  SiAnthropic, SiGoogle, SiGithubcopilot
+  SiAnthropic, SiGoogle, SiGithubcopilot, SiVite, SiFramer, SiD3, SiExpress, SiFastify,
+  SiFastapi, SiFlask, SiModelcontextprotocol
 } from "react-icons/si";
 
 const icons: Record<string, { icon: IconType; color: string }> = {
@@ -56,83 +58,80 @@ const icons: Record<string, { icon: IconType; color: string }> = {
   Render: { icon: SiRender, color: "#46E3B7" },
   Hostinger: { icon: SiHostinger, color: "#673DE6" },
   Claude: { icon: SiAnthropic, color: "#D97757" },
+  MCP: { icon: SiModelcontextprotocol, color: "#FFFFFF" },
   Gemini: { icon: SiGoogle, color: "#4285F4" },
   "GitHub Copilot": { icon: SiGithubcopilot, color: "#FFFFFF" },
+  Vite: { icon: SiVite, color: "#646CFF" },
+  "Framer Motion": { icon: SiFramer, color: "#0055FF" },
+  "D3.js": { icon: SiD3, color: "#F9A03C" },
+  Express: { icon: SiExpress, color: "#FFFFFF" },
+  Fastify: { icon: SiFastify, color: "#FFFFFF" },
+  FastAPI: { icon: SiFastapi, color: "#009688" },
+  Flask: { icon: SiFlask, color: "#FFFFFF" },
 };
 
-function SkillMarquee({ items, direction = 1, speed = 40 }: { items: any[]; direction?: 1 | -1; speed?: number }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const marqueeRef = useRef<HTMLDivElement>(null);
+function SkillCarousel({ items }: { items: Skill[] }) {
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    const marquee = marqueeRef.current;
-    if (!marquee) return;
-
-    const totalWidth = marquee.offsetWidth / 2;
-    const tl = gsap.to(marquee, {
-      x: direction === 1 ? -totalWidth : 0,
-      duration: speed,
-      ease: "none",
-      repeat: -1,
-      onReverseComplete: () => {
-        tl.totalTime(tl.rawTime() + tl.duration() * 100);
-      }
-    });
-
-    if (direction === -1) {
-      gsap.set(marquee, { x: -totalWidth });
-      tl.play();
-    }
-
-    const handleMouseEnter = () => tl.pause();
-    const handleMouseLeave = () => tl.resume();
-
-    marquee.addEventListener("mouseenter", handleMouseEnter);
-    marquee.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      tl.kill();
-      marquee.removeEventListener("mouseenter", handleMouseEnter);
-      marquee.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, [direction, speed]);
+  const scrollByPage = (dir: 1 | -1) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollBy({ left: track.clientWidth * 0.8 * dir, behavior: "smooth" });
+  };
 
   return (
-    <div ref={containerRef} className="overflow-hidden whitespace-nowrap py-6 sm:py-10 [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
-      <div ref={marqueeRef} className="inline-flex gap-4 px-3 sm:gap-8 sm:px-4">
-        {[...items, ...items, ...items].map((skill, idx) => {
+    <div>
+      <div
+        ref={trackRef}
+        className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth py-6 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-4 sm:py-8 [&::-webkit-scrollbar]:hidden"
+      >
+        {items.map((skill) => {
           const iconData = icons[skill.name];
           if (!iconData) return null;
           const Icon = iconData.icon;
 
           return (
             <div
-              key={`${skill.name}-${idx}`}
-              className="group flex cursor-default items-center gap-2 rounded-xl border border-white/5 px-4 py-2.5 glass transition-all duration-300 hover:border-accent-green-darker/30 sm:gap-4 sm:rounded-2xl sm:px-6 sm:py-3 md:px-8 md:py-4"
+              key={skill.name}
+              className="group flex shrink-0 snap-start cursor-default items-center gap-2 rounded-xl border border-white/5 px-4 py-2.5 glass transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.04] hover:bg-white/10 hover:shadow-[0_12px_30px_-10px_rgba(0,0,0,0.6)] sm:gap-4 sm:rounded-2xl sm:px-6 sm:py-3 md:px-8 md:py-4"
             >
               <div className="rounded-lg bg-white/5 p-1.5 transition-colors group-hover:bg-white/10 sm:p-2">
                 <Icon
                   style={{ color: iconData.color }}
-                  className="h-6 w-6 shrink-0 opacity-80 transition-opacity group-hover:opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)] sm:h-7 sm:w-7 md:h-8 md:w-8"
+                  className="h-6 w-6 shrink-0 opacity-80 transition-transform duration-300 group-hover:scale-110 group-hover:opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)] sm:h-7 sm:w-7 md:h-8 md:w-8"
                 />
               </div>
-              <span className="text-sm font-bold text-white/70 transition-colors group-hover:text-white sm:text-lg md:text-xl">
+              <span className="whitespace-nowrap text-sm font-bold text-white/70 transition-colors group-hover:text-white sm:text-lg md:text-xl">
                 {skill.name}
               </span>
             </div>
           );
         })}
       </div>
+
+      <div className="mt-2 flex items-center justify-center gap-3 sm:mt-4">
+        <button
+          type="button"
+          onClick={() => scrollByPage(-1)}
+          aria-label="Scroll skills left"
+          className="glass flex items-center justify-center rounded-full border-2 p-2.5 text-white/70 transition-colors hover:border-accent-green-darker/65 hover:text-white"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button
+          type="button"
+          onClick={() => scrollByPage(1)}
+          aria-label="Scroll skills right"
+          className="glass flex items-center justify-center rounded-full border-2 p-2.5 text-white/70 transition-colors hover:border-accent-green-darker/65 hover:text-white"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </div>
     </div>
   );
 }
 
 export function Skills() {
-  // Split skills for two rows
-  const midPoint = Math.ceil(portfolioData.skills.length / 2);
-  const row1Items = portfolioData.skills.slice(0, midPoint);
-  const row2Items = portfolioData.skills.slice(midPoint);
-
   return (
     <section id="skills" className="min-w-0 max-w-full py-16 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
       <div className="page-shell min-w-0">
@@ -148,13 +147,9 @@ export function Skills() {
           </div>
         </Reveal>
 
-        {/* GSAP Marquee Rows */}
-        <div className="space-y-4 sm:space-y-8">
-          <SkillMarquee items={row1Items} direction={1} speed={50} />
-          <SkillMarquee items={row2Items} direction={-1} speed={60} />
-          {/* Third row for extra variety since boxes are gone */}
-          <SkillMarquee items={[...row1Items].reverse()} direction={1} speed={70} />
-        </div>
+        <Reveal delay={0.06}>
+          <SkillCarousel items={portfolioData.skills} />
+        </Reveal>
 
         <Reveal delay={0.12}>
           <SkillsCodeScreen />

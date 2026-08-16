@@ -8,12 +8,12 @@ import {
 import Lenis from "lenis";
 
 interface ScrollContextType {
-  scrollY: number;
+  isScrolled: boolean;
   scrollTo: (target: string | number | HTMLElement) => void;
 }
 
 const ScrollContext = createContext<ScrollContextType>({
-  scrollY: 0,
+  isScrolled: false,
   scrollTo: () => {},
 });
 
@@ -22,7 +22,7 @@ export function useScroll() {
 }
 
 export function SmoothScroll({ children }: { children: ReactNode }) {
-  const [scrollY, setScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [lenisRef, setLenisRef] = useState<Lenis | null>(null);
 
   useEffect(() => {
@@ -42,7 +42,9 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
 
     function raf(time: number) {
       lenis.raf(time);
-      setScrollY(lenis.scroll);
+      // Only flips React state (and re-renders scroll consumers) when the
+      // threshold is crossed, instead of every frame at 60fps.
+      setIsScrolled(lenis.scroll > 20);
       requestAnimationFrame(raf);
     }
 
@@ -61,7 +63,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
   };
 
   return (
-    <ScrollContext.Provider value={{ scrollY, scrollTo }}>
+    <ScrollContext.Provider value={{ isScrolled, scrollTo }}>
       {children}
     </ScrollContext.Provider>
   );

@@ -22,13 +22,15 @@ export function Certifications() {
           <div className="mx-auto grid w-full max-w-2xl grid-cols-1 gap-4 sm:max-w-3xl">
             {portfolioData.certifications.map((cert, index) => (
               <Reveal key={index} delay={index * 0.1} direction="up" className="h-full">
-                <div className="group relative flex flex-col items-center gap-4 overflow-hidden rounded-2xl glass border-white/5 p-5 transition-all duration-300 hover:border-accent-green-darker/30 sm:flex-row sm:items-center sm:gap-5 sm:p-6 md:gap-6">
+                <div className="group relative flex flex-col items-center gap-4 overflow-hidden rounded-2xl glass border-2 border-white/5 p-5 transition-all duration-300 hover:border-accent-green-darker/55 sm:flex-row sm:items-center sm:gap-5 sm:p-6 md:gap-6">
                   <div className="absolute -right-8 -bottom-8 h-36 w-36 rounded-full bg-accent-green-darker/5 blur-[70px] transition-colors group-hover:bg-accent-green-darker/10" />
 
-                  <div className="relative z-10 flex shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 p-2.5 transition-colors group-hover:border-accent-green-darker/20 sm:p-3">
+                  <div className="relative z-10 flex shrink-0 items-center justify-center rounded-xl border-2 border-white/10 bg-white/5 p-2.5 transition-colors group-hover:border-accent-green-darker/45 sm:p-3">
                     <img
                       src="/aws-certified-cloud-practitioner.png"
                       alt="AWS Certified Cloud Practitioner"
+                      loading="lazy"
+                      decoding="async"
                       className="h-24 w-24 object-contain drop-shadow-[0_0_12px_rgba(255,153,0,0.12)] transition-all duration-300 group-hover:drop-shadow-[0_0_20px_rgba(255,153,0,0.22)] sm:h-28 sm:w-28"
                     />
                   </div>
@@ -43,7 +45,7 @@ export function Certifications() {
                           href={cert.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="shrink-0 rounded-lg border border-white/10 bg-white/5 p-2 transition-all hover:scale-105 hover:bg-accent-green-darker hover:text-black"
+                          className="shrink-0 rounded-lg border border-white/10 bg-white/5 p-2 transition-colors hover:bg-accent-green-darker hover:text-black"
                           aria-label="View Certificate"
                         >
                           <ExternalLink size={16} />

@@ -1,11 +1,11 @@
 import { Reveal } from "@/components/motion/Reveal";
-import { Tilt } from "@/components/motion/Tilt";
+import { portfolioData } from "@/content/portfolio";
 import * as React from "react";
-import { 
-  Rocket, 
-  Cpu, 
-  Globe, 
-  Brain, 
+import {
+  Rocket,
+  Cpu,
+  Globe,
+  Brain,
   Trophy,
   History
 } from "lucide-react";
@@ -48,6 +48,10 @@ function Counter({
 }
 
 export function About() {
+  const allProjects = portfolioData.projectGroups.flatMap(
+    (group) => group.projects,
+  );
+
   const stats = [
     {
       label: "Years Experience",
@@ -57,19 +61,19 @@ export function About() {
     },
     {
       label: "Projects Built",
-      value: 20,
+      value: allProjects.length,
       icon: Rocket,
       delay: 0.25,
     },
     {
       label: "Technologies",
-      value: 15,
+      value: portfolioData.skills.length,
       icon: Cpu,
       delay: 0.3,
     },
     {
       label: "Deployments",
-      value: 10,
+      value: allProjects.filter((project) => project.links.demo).length,
       icon: Globe,
       delay: 0.35,
     },
@@ -129,55 +133,51 @@ export function About() {
           <div className="grid grid-cols-2 gap-3 sm:gap-6">
             {stats.map((stat, idx) => (
               <Reveal key={idx} delay={stat.delay}>
-                <Tilt intensity={12}>
-                  <div className="group relative glass p-4 text-center transition-all duration-500 hover:border-accent-green-darker/30 hover:shadow-[0_0_30px_rgba(14,219,171,0.1)] overflow-hidden rounded-xl border-white/5 sm:rounded-2xl sm:p-7">
-                    {/* Decorative background pulse */}
-                    <div className="absolute -right-4 -top-4 text-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <stat.icon size={80} />
-                    </div>
-                    
-                    <div className="relative z-10">
-                      <div className="flex justify-center mb-4">
-                        <div className="p-3 rounded-xl bg-white/5 border border-white/5 group-hover:border-accent-green-darker/20 group-hover:bg-accent-green-darker/10 transition-all duration-300">
-                          <stat.icon size={24} className="text-white/40 group-hover:text-accent-green-darker" />
-                        </div>
-                      </div>
-                      
-                      <h4 className="mb-1 text-2xl font-bold text-accent-green-darker transition-transform duration-300 group-hover:scale-105 sm:mb-2 sm:text-3xl md:text-4xl">
-                        <Counter end={stat.value} />
-                      </h4>
-                      <p className="text-[10px] font-mono uppercase tracking-widest text-white/50 sm:text-xs">
-                        {stat.label}
-                      </p>
-                    </div>
+                <div className="group relative glass border-2 p-4 text-center transition-all duration-500 hover:border-accent-green-darker/55 hover:shadow-[0_0_30px_rgba(14,219,171,0.1)] overflow-hidden rounded-xl border-white/5 sm:rounded-2xl sm:p-7">
+                  {/* Decorative background pulse */}
+                  <div className="absolute -right-4 -top-4 text-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <stat.icon size={80} />
                   </div>
-                </Tilt>
+
+                  <div className="relative z-10">
+                    <div className="flex justify-center mb-4">
+                      <div className="p-3 rounded-xl bg-white/5 border-2 border-white/5 group-hover:border-accent-green-darker/45 group-hover:bg-accent-green-darker/10 transition-all duration-300">
+                        <stat.icon size={24} className="text-white/40 group-hover:text-accent-green-darker" />
+                      </div>
+                    </div>
+
+                    <h4 className="mb-1 text-2xl font-bold text-accent-green-darker sm:mb-2 sm:text-3xl md:text-4xl">
+                      <Counter end={stat.value} />
+                    </h4>
+                    <p className="text-[10px] font-mono uppercase tracking-widest text-white/50 sm:text-xs">
+                      {stat.label}
+                    </p>
+                  </div>
+                </div>
               </Reveal>
             ))}
 
             <Reveal delay={0.4} className="col-span-2">
-              <Tilt intensity={8}>
-                <div className="group relative glass overflow-hidden rounded-xl border-white/5 p-5 transition-all duration-500 hover:border-accent-green-darker/30 hover:shadow-[0_0_40px_rgba(14,219,171,0.15)] sm:rounded-2xl sm:p-8">
-                  <div className="absolute -right-10 -top-10 text-accent-green-darker/5 group-hover:text-accent-green-darker/10 transition-colors duration-500">
-                    <Brain size={240} />
+              <div className="group relative glass border-2 overflow-hidden rounded-xl border-white/5 p-5 transition-all duration-500 hover:border-accent-green-darker/55 hover:shadow-[0_0_40px_rgba(14,219,171,0.15)] sm:rounded-2xl sm:p-8">
+                <div className="absolute -right-10 -top-10 text-accent-green-darker/5 group-hover:text-accent-green-darker/10 transition-colors duration-500">
+                  <Brain size={240} />
+                </div>
+
+                <div className="relative z-10 flex flex-col items-center gap-4 text-center md:flex-row md:items-start md:justify-between md:text-left md:gap-6">
+                  <div className="flex-1 max-w-md">
+                    <h4 className="mb-2 text-xl font-bold text-accent-green-darker transition-colors group-hover:text-white sm:text-2xl md:text-3xl">
+                      AI Developer
+                    </h4>
+                    <p className="text-xs leading-relaxed text-white/60 sm:text-sm">
+                      Building intelligent experiences through AI integration,
+                      automation, and modern full-stack development.
+                    </p>
                   </div>
-                  
-                  <div className="relative z-10 flex flex-col items-center gap-4 text-center md:flex-row md:items-start md:justify-between md:text-left md:gap-6">
-                    <div className="flex-1 max-w-md">
-                      <h4 className="mb-2 text-xl font-bold text-accent-green-darker transition-colors group-hover:text-white sm:text-2xl md:text-3xl">
-                        AI Developer
-                      </h4>
-                      <p className="text-xs leading-relaxed text-white/60 sm:text-sm">
-                        Building intelligent experiences through AI integration,
-                        automation, and modern full-stack development.
-                      </p>
-                    </div>
-                    <div className="p-4 rounded-2xl bg-white/5 border border-white/5 group-hover:border-accent-green-darker/40 group-hover:bg-accent-green-darker/10 transition-all duration-500 animate-pulse">
-                      <Brain size={40} className="text-accent-green-darker" />
-                    </div>
+                  <div className="p-4 rounded-2xl bg-white/5 border-2 border-white/5 group-hover:border-accent-green-darker/65 group-hover:bg-accent-green-darker/10 transition-all duration-500 animate-pulse">
+                    <Brain size={40} className="text-accent-green-darker" />
                   </div>
                 </div>
-              </Tilt>
+              </div>
             </Reveal>
           </div>
         </div>

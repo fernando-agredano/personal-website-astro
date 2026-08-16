@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
-import { FileText } from "lucide-react";
+import { FileText, FolderGit2 } from "lucide-react";
 
 export function Hero() {
   return (
@@ -73,7 +73,6 @@ export function Hero() {
                       text-black
                       hover:brightness-110
                       hover:shadow-[0_0_18px_rgba(14,219,171,0.45),0_0_38px_rgba(14,219,171,0.2)]
-                      hover:scale-[1.02]
                       transition-all duration-300
                     "
                   >
@@ -83,21 +82,25 @@ export function Hero() {
                   <a
                     href="#projects"
                     className="
-                      inline-flex w-full max-w-[280px] items-center justify-center
+                      group inline-flex w-full max-w-[280px] items-center justify-center gap-3
                       sm:min-w-[200px] sm:max-w-none
                       px-6 py-3.5 sm:px-7 sm:py-4
                       rounded-xl
                       font-semibold
-                      border border-white/25
+                      glass border-2 border-white/5
                       text-white/70
-                      bg-transparent
-                      hover:border-[var(--color-accent-green-darker)]
-                      hover:text-[var(--color-accent-green-darker)]
-                      hover:bg-black
+                      hover:border-[var(--color-accent-green-darker)]/65
+                      hover:bg-[var(--color-accent-green-darker)]/5
                       transition-all duration-300
                     "
                   >
-                    My projects
+                    <FolderGit2
+                      size={18}
+                      className="text-white/70 transition-colors group-hover:text-[var(--color-accent-green-darker)]"
+                    />
+                    <span className="transition-colors group-hover:text-white">
+                      My projects
+                    </span>
                   </a>
                 </div>
               </Reveal>
@@ -108,22 +111,25 @@ export function Hero() {
                     href="/Fernando-Agredano-CV.pdf"
                     download
                     className="
-                      inline-flex w-full max-w-[280px] items-center justify-center gap-3
+                      group inline-flex w-full max-w-[280px] items-center justify-center gap-3
                       sm:min-w-[200px] sm:max-w-none
                       px-6 py-3.5 sm:px-7 sm:py-4
                       rounded-xl
                       font-semibold
-                      border border-white/25
+                      glass border-2 border-white/5
                       text-white/70
-                      bg-transparent
-                      hover:border-[var(--color-accent-green-darker)]
-                      hover:text-[var(--color-accent-green-darker)]
-                      hover:bg-black
+                      hover:border-[var(--color-accent-green-darker)]/65
+                      hover:bg-[var(--color-accent-green-darker)]/5
                       transition-all duration-300
                     "
                   >
-                    <FileText size={18} />
-                    Download CV
+                    <FileText
+                      size={18}
+                      className="text-white/70 transition-colors group-hover:text-[var(--color-accent-green-darker)]"
+                    />
+                    <span className="transition-colors group-hover:text-white">
+                      Download CV
+                    </span>
                   </a>
                 </div>
               </Reveal>
@@ -152,6 +158,8 @@ export function Hero() {
                       alt="Fernando Agredano"
                       width={380}
                       height={540}
+                      fetchPriority="high"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-contain object-center select-none"
                     />
                   </div>

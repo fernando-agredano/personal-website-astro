@@ -28,7 +28,7 @@ export const portfolioData: PortfolioData = {
       role: "Full-Stack Developer",
       company: "iNBest",
       description:
-        "Promoted to lead end-to-end features, architecting scalable backend services with Node.js and Express while maintaining high-performance React/Next.js frontends. Leveraging AI-driven development to streamline workflows and optimize cloud infrastructure on AWS.",
+        "Promoted to lead end-to-end features, architecting scalable backend services with Node.js and Express while maintaining high-performance React/Next.js frontends on AWS. Pioneering AI-native development within the team — orchestrating multi-agent workflows with Claude Code and custom MCP servers to automate research, code review, and documentation, cutting delivery time on complex features.",
     },
     {
       period: "September 2025 — October 2025",
@@ -73,86 +73,170 @@ export const portfolioData: PortfolioData = {
       date: "2024",
     },
   ],
-  projects: [
+  projectGroups: [
     {
-      id: "1",
-      title: "Premium E-commerce",
+      id: "product-engineering",
+      title: "Product Engineering",
       description:
-        "A high-performance e-commerce platform with smooth transitions and 3D product previews.",
-      image: "/projects/project-1.jpg",
-      tags: ["Next.js", "GSAP", "Three.js"],
-      links: { github: "#", demo: "#" },
-      featured: true,
+        "End-to-end products designed, built and shipped solo — from a financial institution's core ledger to a brand's landing page.",
+      projects: [
+        {
+          id: "ledgerly-credit-platform",
+          title: "Ledgerly — SME Private Credit Platform",
+          description:
+            "A full loan origination & servicing system for a private credit institution — underwriting, credit committee, disbursement, a double-entry ledger, collections buckets and portfolio risk monitoring, backed by Supabase with row-level security on every table.",
+          image: "/projects/ledgerly.png",
+          tags: ["React", "TypeScript", "Supabase", "PostgreSQL", "RLS"],
+          links: {
+            github: "https://github.com/fernando-agredano/ledgerly",
+            demo: "https://ledgerly-one-psi.vercel.app",
+          },
+          variant: "hero",
+        },
+        {
+          id: "financeflow-dashboard",
+          title: "FinanceFlow — Personal Finance Dashboard",
+          description:
+            "A local-first personal finance app — income/expense tracking, monthly budgets by category, trend charts and statement-style PDF/CSV exports — with zero backend: every record lives in the browser via IndexedDB.",
+          image: "/projects/financeflow.png",
+          tags: ["Next.js", "TypeScript", "Material UI", "Dexie.js"],
+          links: {
+            github: "https://github.com/fernando-agredano/financeflow",
+            demo: "https://financeflow-sigma-nine.vercel.app",
+          },
+          variant: "standard",
+        },
+        {
+          id: "casta-fina-landing",
+          title: "Casta Fina — Streetwear Brand Site",
+          description:
+            "A cinematic one-page brand site for a limited-run streetwear label — scroll storytelling, an authenticity-certificate motif for numbered pieces, and a WhatsApp-first contact flow built for conversion as much as for look.",
+          image: "/projects/casta-fina.jpg",
+          tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+          links: {
+            github: "https://github.com/fernando-agredano/casta-fina",
+            demo: "https://casta-fina.vercel.app",
+          },
+          variant: "standard",
+        },
+      ],
     },
     {
-      id: "2",
-      title: "AI Analytics Dashboard",
+      id: "backend-architectures-lab",
+      title: "Backend Architectures Lab",
       description:
-        "Real-time data visualization platform with complex filtering and motion-driven insights.",
-      image: "/projects/project-2.jpg",
-      tags: ["TypeScript", "Tailwind", "D3.js"],
-      links: { github: "#", demo: "#" },
-      featured: true,
+        "Four takes on the same class of problem — e-commerce and inventory — each solved with a different backend architecture, probed live through a custom-built API client.",
+      projects: [
+        {
+          id: "backend-architectures-lab-explorer",
+          title: "Backend Architectures Lab",
+          description:
+            "A hands-on lab comparing four backend architecture styles side by side — Clean, Hexagonal, Layered and CQRS — probed live through a custom-built visual API client with JWT handling and Local/production environment switching.",
+          image: "/projects/api-explorer.png",
+          tags: ["React", "Vite", "API Design", "Vercel"],
+          links: {
+            github: "https://github.com/fernando-agredano/api-explorer",
+            demo: "https://api-explorer-brown.vercel.app/",
+          },
+          variant: "hero",
+        },
+        {
+          id: "clean-architecture-ecommerce",
+          title: "Clean Architecture — E-commerce API",
+          description:
+            "Product and order management API built on strict Clean Architecture: domain entities own the business rules — stock control, order state machine — with zero knowledge of Express or PostgreSQL underneath.",
+          image: "/projects/clean-architecture.svg",
+          tags: ["Node.js", "Express", "Clean Architecture", "PostgreSQL"],
+          links: {
+            github: "https://github.com/fernando-agredano/node-express-clean",
+            demo: "https://node-express-clean.onrender.com",
+          },
+          variant: "standard",
+        },
+        {
+          id: "cqrs-inventory-system",
+          title: "CQRS + Event-Driven — Inventory System",
+          description:
+            "Inventory API with commands and queries fully separated, and an event bus driving low-stock alerts and audit logging as independent side effects of every stock movement.",
+          image: "/projects/cqrs-architecture.svg",
+          tags: ["Node.js", "Fastify", "CQRS", "Event-Driven"],
+          links: {
+            github: "https://github.com/fernando-agredano/node-fastify-cqrs",
+            demo: "https://node-fastify-cqrs.onrender.com",
+          },
+          variant: "standard",
+        },
+        {
+          id: "layered-task-manager",
+          title: "Layered Architecture — Task Manager API",
+          description:
+            "JWT-authenticated task manager following a classic N-tier flow — routes, services, repositories, models — with interactive Swagger docs generated straight from the FastAPI schema.",
+          image: "/projects/layered-architecture.svg",
+          tags: ["Python", "FastAPI", "JWT Auth", "PostgreSQL"],
+          links: {
+            github: "https://github.com/fernando-agredano/python-fastapi-tasks",
+            demo: "https://python-fastapi-tasks.onrender.com/docs",
+          },
+          variant: "standard",
+        },
+        {
+          id: "hexagonal-notifications",
+          title: "Hexagonal Architecture — Notifications Service",
+          description:
+            "Multi-channel notification service (email, SMS, in-app) with a domain core that imports zero frameworks — every channel and datastore is a swappable adapter behind its own port.",
+          image: "/projects/hexagonal-architecture.svg",
+          tags: ["Python", "Flask", "Hexagonal", "Ports & Adapters"],
+          links: {
+            github: "https://github.com/fernando-agredano/python-flask-hexagonal",
+            demo: "https://python-flask-hexagonal.onrender.com",
+          },
+          variant: "standard",
+        },
+      ],
     },
     {
-      id: "3",
-      title: "AI Content Generator",
+      id: "ai-engineering-tooling",
+      title: "AI Engineering & Tooling",
       description:
-        "SaaS platform that generates marketing content using LLMs with customizable prompts and team workspaces.",
-      image: "/projects/project-3.jpg",
-      tags: ["Next.js", "OpenAI", "Prisma"],
-      links: { github: "#", demo: "#" },
-      featured: true,
-    },
-    {
-      id: "4",
-      title: "Real-Time Collaboration App",
-      description:
-        "A collaborative workspace with live editing, comments, and presence indicators powered by WebSockets.",
-      image: "/projects/project-4.jpg",
-      tags: ["Next.js", "Socket.io", "PostgreSQL"],
-      links: { github: "#", demo: "#" },
-      featured: true,
-    },
-    {
-      id: "5",
-      title: "Developer Portfolio Engine",
-      description:
-        "A customizable portfolio system for developers with dynamic project management and animation presets.",
-      image: "/projects/project-5.jpg",
-      tags: ["Next.js", "Framer Motion", "Tailwind"],
-      links: { github: "#", demo: "#" },
-      featured: false,
-    },
-    {
-      id: "6",
-      title: "SaaS Billing Platform",
-      description:
-        "Subscription management system with Stripe integration, usage tracking, and advanced analytics.",
-      image: "/projects/project-6.jpg",
-      tags: ["Next.js", "Stripe", "Supabase"],
-      links: { github: "#", demo: "#" },
-      featured: false,
-    },
-    {
-      id: "7",
-      title: "Smart Task Manager",
-      description:
-        "Productivity app that prioritizes tasks using AI predictions and contextual automation.",
-      image: "/projects/project-7.jpg",
-      tags: ["React", "Node.js", "AI"],
-      links: { github: "#", demo: "#" },
-      featured: false,
-    },
-    {
-      id: "8",
-      title: "Data Visualization Studio",
-      description:
-        "Interactive dashboard builder that allows teams to create custom analytics panels with drag-and-drop charts.",
-      image: "/projects/project-8.jpg",
-      tags: ["React", "D3.js", "TypeScript"],
-      links: { github: "#", demo: "#" },
-      featured: false,
+        "Developer tooling built around AI-assisted engineering: a multi-agent orchestration stack with live observability, and a codebase-aware memory system stress-tested inside a real booking engine.",
+      projects: [
+        {
+          id: "claude-agent-stack",
+          title: "Claude Agent Stack — Multi-Agent Orchestration",
+          description:
+            "A dev-tooling stack for orchestrating Claude Code: an orchestrator with 4 specialized subagents, a persistent memory MCP server backed by SQLite, an Obsidian vault bridge, and a live React + D3 dashboard observing every agent, memory write and event as it happens.",
+          image: "/projects/claude-agent-stack.png",
+          tags: ["TypeScript", "MCP", "Express", "WebSocket", "D3.js"],
+          links: {
+            github: "https://github.com/fernando-agredano/claude-agent-stack",
+          },
+          variant: "standard",
+        },
+        {
+          id: "flight-booking-engine",
+          title: "Aerolit — AI Code Tooling Case Study",
+          description:
+            "A flight booking engine — search, seat inventory, fare rules, cancellations — built as a real-world test bed for two AI dev tools: Graphify, which maps a codebase into an interactive knowledge graph, and Engram, a persistent memory layer for coding agents.",
+          image: "/projects/flight-booking-engine.png",
+          tags: ["Node.js", "Express", "React", "Vite", "Knowledge Graphs"],
+          links: {
+            github: "https://github.com/fernando-agredano/flight-booking-engine",
+          },
+          variant: "standard",
+        },
+        {
+          id: "project-notes-graph",
+          title: "Project Notes Graph — Portfolio Knowledge Graph",
+          description:
+            "A scanner that reads every repo in a projects folder — package.json, requirements.txt, go.mod, git history — and auto-generates a note per project, then renders them as an interactive Graphify graph with a live tech-stack dashboard and an Engram-backed memory panel of real design decisions.",
+          image: "/projects/project-notes-graph.png",
+          tags: ["Node.js", "Express", "React", "Graphify", "Engram"],
+          links: {
+            github: "https://github.com/fernando-agredano/project-notes-graph",
+          },
+          variant: "standard",
+        },
+      ],
     },
   ],
   skills: [
@@ -161,6 +245,7 @@ export const portfolioData: PortfolioData = {
     { name: "Django", category: "Frameworks" },
     { name: "NestJS", category: "Frameworks" },
     { name: "Astro", category: "Frameworks" },
+    { name: "Vite", category: "Frameworks" },
 
     { name: "JavaScript", category: "Frontend" },
     { name: "TypeScript", category: "Frontend" },
@@ -171,10 +256,16 @@ export const portfolioData: PortfolioData = {
     { name: "shadcn/ui", category: "Frontend" },
     { name: "GSAP", category: "Frontend" },
     { name: "anime.js", category: "Frontend" },
+    { name: "Framer Motion", category: "Frontend" },
+    { name: "D3.js", category: "Frontend" },
 
     { name: "Node.js", category: "Backend" },
+    { name: "Express", category: "Backend" },
+    { name: "Fastify", category: "Backend" },
     { name: ".NET", category: "Backend" },
     { name: "Python", category: "Backend" },
+    { name: "FastAPI", category: "Backend" },
+    { name: "Flask", category: "Backend" },
     { name: "Java", category: "Backend" },
 
     { name: "PostgreSQL", category: "Databases" },
@@ -193,6 +284,7 @@ export const portfolioData: PortfolioData = {
     { name: "GitHub", category: "DevOps" },
 
     { name: "Claude", category: "AI Tools" },
+    { name: "MCP", category: "AI Tools" },
     { name: "Gemini", category: "AI Tools" },
     { name: "GitHub Copilot", category: "AI Tools" },
     { name: "Cursor", category: "AI Tools" },

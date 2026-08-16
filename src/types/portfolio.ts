@@ -19,7 +19,14 @@ export interface Project {
     github?: string;
     demo?: string;
   };
-  featured: boolean;
+  variant?: "hero" | "standard";
+}
+
+export interface ProjectGroup {
+  id: string;
+  title: string;
+  description: string;
+  projects: Project[];
 }
 
 export interface Skill {
@@ -64,7 +71,7 @@ export interface PortfolioData {
   navLinks: NavLink[];
   experience: Experience[];
   certifications: Certification[];
-  projects: Project[];
+  projectGroups: ProjectGroup[];
   skills: Skill[];
   interests: Interest[];
 }
