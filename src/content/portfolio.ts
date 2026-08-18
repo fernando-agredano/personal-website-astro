@@ -5,12 +5,12 @@ export const portfolioData: PortfolioData = {
   role: "Full-Stack Developer",
   tagline: "Systems Engineer & Full Stack Developer @ iNBest",
   bio: "Digital craftsman specializing in building sophisticated, high-performance web applications. I bridge the gap between complex engineering and elegant design.",
-  email: "hello@example.com",
+  email: "fernando.agredano.parada@gmail.com",
   socials: {
-    github: "https://github.com/fernandoagredano",
-    linkedin: "https://linkedin.com/in/fernandoagredano",
-    instagram: "https://instagram.com/fernandoagredano",
-    facebook: "https://facebook.com/fernandoagredano",
+    github: "https://github.com/fernando-agredano",
+    linkedin: "https://www.linkedin.com/in/fernando-yael-agredano-parada-6463662aa/",
+    instagram: "https://www.instagram.com/yaelfernando/",
+    facebook: "https://www.facebook.com/profile.php?id=61593434611564",
   },
   navLinks: [
     { label: "Home", href: "#home" },
